@@ -13,44 +13,21 @@ class NetworkService {
     
     let session = URLSession(configuration: .default)
     
-    let URL_API_KEY = "fae7190d7e6433ec3a45285ffcf55c86"
-    let URL_BASE = "https://api.openweathermap.org/data/2.5"
-    var URL_LATITUDE = ""
-    var URL_LONGITUDE = ""
-    var URL_GET_ONE_CALL = ""
-
-    func setLatitude(_ latitude: String) {
-        URL_LATITUDE = latitude
-    }
-    
-    func setLatitude(_ latitude: Double) {
-        setLatitude(String(latitude))
-    }
-    
-    func setLongitude(_ longitude: String) {
-        URL_LONGITUDE = longitude
-    }
-    
-    func setLongitude(_ longitude: Double) {
-        setLongitude(String(longitude))
-    }
-    
-    
-    func buildURL() -> String {
-        URL_GET_ONE_CALL = "/weather?lat=" + URL_LATITUDE + "&lon=" + URL_LONGITUDE  + "&appid=" + URL_API_KEY
-        return URL_BASE + URL_GET_ONE_CALL
-    }
-    
-    
-    func getWeather(locationdetails :LocationDetail ,onSuccess: @escaping (Result) -> Void, onError: @escaping (String) -> Void) {
+    func getWeather(router : Router ,locationdetails: LocationDetail,onSuccess: @escaping (Result) -> Void, onError: @escaping (String) -> Void) {
      
-        URL_LATITUDE = String(locationdetails.lat)
-        URL_LONGITUDE = String(locationdetails.long)
+        var components = URLComponents()
+        components.scheme = router.scheme
+        components.host = router.host
+        components.path = router.path
+        let parameters: [String: String] = [
+                    "lat": String(locationdetails.lat),
+                    "lon": String(locationdetails.long),
+            "appid": router.accessToken
+                ]
         
-        guard let url = URL(string: buildURL()) else {
-            onError("Error building URL")
-            return
-        }
+        components.setQueryItems(with: parameters)
+        
+        guard let url = components.url else { return}        
         print("url----->\(url)")
         let task = session.dataTask(with: url) { (data, response, error) in
             
@@ -79,5 +56,12 @@ class NetworkService {
             
         }
         task.resume()
+    }
+}
+
+extension URLComponents {
+    
+    mutating func setQueryItems(with parameters: [String: String]) {
+        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
     }
 }

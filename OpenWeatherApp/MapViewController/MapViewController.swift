@@ -29,7 +29,7 @@ class MapViewController: UIViewController {
             
             //TODO: Just to test
             //change the static API call to dynamic            
-            NetworkService.shared.getWeather(locationdetails: mapView.locationDetail) { (result) in
+            NetworkService.shared.getWeather(router: Router.todaysForcast, locationdetails: mapView.locationDetail) { (result) in
                 print(result.main)
                 print(result.weather)
 
