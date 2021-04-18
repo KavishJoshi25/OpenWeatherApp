@@ -64,18 +64,5 @@ extension URLComponents {
     mutating func setQueryItems(with parameters: [String: String]) {
         self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
     }
-}
-
-
-extension Date {
-
- static func getCurrentDate() -> String {
-
-        let dateFormatter = DateFormatter()
-
-        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
-
-        return dateFormatter.string(from: Date())
-
-    }
+    
 }
