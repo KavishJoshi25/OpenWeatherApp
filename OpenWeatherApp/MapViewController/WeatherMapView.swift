@@ -9,13 +9,6 @@ import Foundation
 import UIKit
 import MapKit
 
-struct LocationDetail {
-    var locationName = ""
-    var locationStreet = ""
-    var lat = Double()
-    var long = Double()
-}
-
 class CustomPointAnnotation: MKPointAnnotation {
     
     var txtLocaltionDetails :String!
@@ -150,7 +143,7 @@ class WeatherMapView: MKMapView {
                                                         street = name
                                                         
                                                     }
-                                                   self.locationDetail = LocationDetail(locationName: location, locationStreet: street, lat: touchCoordinate.latitude, long: touchCoordinate.longitude)
+                                                    self.locationDetail = LocationDetail(locationName: location, locationStreet: street, lat: touchCoordinate.latitude, long: touchCoordinate.longitude)
                                                     annotation.title = street + "\n" + location
                                                     
                                                 })        }

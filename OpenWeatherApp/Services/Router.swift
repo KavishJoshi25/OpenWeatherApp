@@ -5,7 +5,7 @@
 //  Created by Kavish Joshi on 4/18/21.
 //
 
-enum Router {
+enum Router: Int {
     case todaysForcast
     case fivedaysForcast
     

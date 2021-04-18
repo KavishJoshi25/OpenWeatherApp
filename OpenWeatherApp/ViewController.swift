@@ -23,9 +23,11 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print(appDelegate.weatherInfo)
         self.updateUpperView()
+        self.updateLowerView()
     }
 
-    private func updateUpperView(){
+    //MARK: updateUpperView
+    private func updateUpperView() {
         if let city = appDelegate.weatherInfo.first?.name {
             self.upperView.cityText = city
         }
@@ -33,6 +35,25 @@ class ViewController: UIViewController {
             self.upperView.weatherText = weather
         }
         self.upperView.setDayAndDate()
+    }
+    
+    //MARK: updateLowerView
+    private func updateLowerView() {
+        let weather = self.weatherDetailView.getSelectedTitle()
+        let type = Router.init(rawValue: weather)
+        
+        switch type {
+        case .todaysForcast:
+            self.weatherDetailView.istoday = false
+            self.weatherDetailView.updateTodaysView(result: appDelegate.weatherInfo)
+
+        case .fivedaysForcast:
+            break
+        default:
+            self.weatherDetailView.clear()
+
+        }
+        
     }
     
 }

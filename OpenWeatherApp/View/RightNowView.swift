@@ -20,7 +20,6 @@ class RightNowView: FancyView {
     }
     
     func setDayAndDate()  {
-       
         self.dateLabel.text = "Day & Date: " + Date.getCurrentDate()
     }
 

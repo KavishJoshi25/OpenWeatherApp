@@ -125,11 +125,11 @@
 		7AF22E58262AD3AF00A9CCDA /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				7A7EF03F262C4FC600A56C81 /* Extensions */,
-				7AF22E8F262AD47E00A9CCDA /* Services */,
 				7AF22E8E262AD46E00A9CCDA /* Controller */,
 				7AF22E8D262AD45E00A9CCDA /* View */,
 				7AF22E8C262AD44800A9CCDA /* Model */,
+				7A7EF03F262C4FC600A56C81 /* Extensions */,
+				7AF22E8F262AD47E00A9CCDA /* Services */,
 				7AF22E59262AD3AF00A9CCDA /* AppDelegate.swift */,
 				7AF22E5B262AD3AF00A9CCDA /* SceneDelegate.swift */,
 				7AF22E5F262AD3AF00A9CCDA /* Main.storyboard */,

@@ -72,5 +72,10 @@ struct Sys: Codable {
   
 }
 
-
-
+//MARK: LocationDetail
+struct LocationDetail {
+    var locationName = ""
+    var locationStreet = ""
+    var lat = Double()
+    var long = Double()
+}

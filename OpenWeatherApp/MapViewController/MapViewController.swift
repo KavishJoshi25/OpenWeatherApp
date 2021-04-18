@@ -31,7 +31,7 @@ class MapViewController: UIViewController {
                 self.appDelegate.weatherInfo.append(result)
 
             } onError: { (error) in
-                print(error)
+                self.presentErrorAlertController(error: error.description)
             }
             
         }
