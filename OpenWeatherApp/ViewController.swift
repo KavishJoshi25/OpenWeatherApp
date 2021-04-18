@@ -53,7 +53,6 @@ class ViewController: UIViewController {
         case .fivedaysForcast:
             self.getFiveDaysForcast()
             self.weatherDetailView.istoday = false
-            self.weatherDetailView.fiveDayWeather(result: appDelegate.fiveDayForcast)
            
         default:
             self.weatherDetailView.clear()
@@ -76,6 +75,7 @@ class ViewController: UIViewController {
         
         NetworkService.shared.getFiveDaysWeather(router: Router.fivedaysForcast, locationdetails: locationDetails) { (result) in
             self.appDelegate.fiveDayForcast.append(result)
+            self.weatherDetailView.fiveDayWeather(result: self.appDelegate.fiveDayForcast)
 
         } onError: { (error) in
             self.presentErrorAlertController(error: error.description)
