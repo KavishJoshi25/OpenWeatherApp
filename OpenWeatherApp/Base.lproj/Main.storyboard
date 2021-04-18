@@ -11,42 +11,76 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OpenWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aD5-nh-ncx">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vr-qy-RyQ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellIdentifier" id="2yx-fZ-65b">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2yx-fZ-65b" id="eyk-4b-daD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="s9t-vS-pdD"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="r0O-ur-pJY"/>
-                                </connections>
-                            </tableView>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ud-Fu-kD6" customClass="RightNowView" customModule="OpenWeatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="jg7-DX-2NP">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday, 4th April" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nil-4a-ZJp">
+                                                        <rect key="frame" x="136" y="0.0" width="142.5" height="61"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dallas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoT-Ex-Xot">
+                                                        <rect key="frame" x="184" y="85" width="46.5" height="61"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Really Hot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISJ-w0-bNQ">
+                                                        <rect key="frame" x="168" y="170" width="78.5" height="60.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="jg7-DX-2NP" firstAttribute="leading" secondItem="0Ud-Fu-kD6" secondAttribute="leading" id="1L0-Fy-4Q2"/>
+                                            <constraint firstAttribute="bottom" secondItem="jg7-DX-2NP" secondAttribute="bottom" id="CJQ-ER-a4i"/>
+                                            <constraint firstItem="jg7-DX-2NP" firstAttribute="top" secondItem="0Ud-Fu-kD6" secondAttribute="top" id="V6u-NP-rD6"/>
+                                            <constraint firstAttribute="trailing" secondItem="jg7-DX-2NP" secondAttribute="trailing" id="tWN-SD-n4N"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="cityLabel" destination="hoT-Ex-Xot" id="3v4-Yg-5At"/>
+                                            <outlet property="dateLabel" destination="Nil-4a-ZJp" id="Ydf-zL-QO2"/>
+                                            <outlet property="weatherLabel" destination="ISJ-w0-bNQ" id="VQ8-q9-GyV"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="0Ud-Fu-kD6" firstAttribute="leading" secondItem="7vr-qy-RyQ" secondAttribute="leading" id="15G-VT-acU"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Ud-Fu-kD6" secondAttribute="trailing" id="LCn-vn-fyb"/>
+                                    <constraint firstItem="0Ud-Fu-kD6" firstAttribute="top" secondItem="7vr-qy-RyQ" secondAttribute="top" id="T4r-e2-ckK"/>
+                                    <constraint firstItem="0Ud-Fu-kD6" firstAttribute="height" secondItem="7vr-qy-RyQ" secondAttribute="height" multiplier="0.3" id="eM3-MV-4bK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aD5-nh-ncx" secondAttribute="bottom" id="L1k-cw-v7F"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aD5-nh-ncx" secondAttribute="trailing" id="P0U-aU-vYL"/>
-                            <constraint firstItem="aD5-nh-ncx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RMk-7o-Ew4"/>
-                            <constraint firstItem="aD5-nh-ncx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qqe-tx-Ey5"/>
+                            <constraint firstItem="7vr-qy-RyQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Gqy-0P-jDk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7vr-qy-RyQ" secondAttribute="trailing" id="KPq-hX-tqN"/>
+                            <constraint firstItem="7vr-qy-RyQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NvG-hx-r8C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7vr-qy-RyQ" secondAttribute="bottom" id="rPj-20-WrX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="ywN-lX-gtD"/>
                     <connections>
-                        <outlet property="tableView" destination="aD5-nh-ncx" id="Mgd-nW-yEa"/>
+                        <outlet property="upperView" destination="0Ud-Fu-kD6" id="MKj-mx-ScO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -56,12 +90,12 @@
         <!--Map-->
         <scene sceneID="FRM-Y3-FKy">
             <objects>
-                <viewController id="7NP-no-Zjo" customClass="MapViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7NP-no-Zjo" customClass="MapViewController" customModule="OpenWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Icr-Tu-FTk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qzG-2n-UQj" customClass="WeatherMapView" customModule="WeatherApp" customModuleProvider="target">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qzG-2n-UQj" customClass="WeatherMapView" customModule="OpenWeatherApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOL-uw-qys">

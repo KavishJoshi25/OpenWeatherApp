@@ -9,35 +9,24 @@ import UIKit
 
 class ViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var upperView: RightNowView!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
-        self.tableView.rowHeight = UITableView.automaticDimension;
-        self.tableView.estimatedRowHeight = 60.0
-    }
-
-}
-
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        appDelegate.locationArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
-        cell.textLabel?.text = appDelegate.locationArray[indexPath.row].locationName
-        cell.detailTextLabel?.text = appDelegate.locationArray[indexPath.row].locationStreet
-        
+        //data is here
         print(appDelegate.weatherInfo)
-        return cell
+        if let city = appDelegate.weatherInfo.first?.name {
+            upperView.cityText = city
+        }
+        if let weather = appDelegate.weatherInfo.first?.weather.first?.weatherDescription {
+            upperView.weatherText = weather
+
+        }
+        upperView.setDayAndDate()
     }
-    
+
 }
