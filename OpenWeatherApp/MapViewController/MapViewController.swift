@@ -24,14 +24,11 @@ class MapViewController: UIViewController {
     @IBAction func addFavouriteAction() {
         if !mapView.locationDetail.locationName.isEmpty && !mapView.locationDetail.locationName.isEmpty {
             
-            appDelegate.locationArray.append(mapView.locationDetail)
-            //insert(mapView.locationDetail)
-            
+            appDelegate.locationArray.append(mapView.locationDetail)            
             //TODO: Just to test
             //change the static API call to dynamic            
             NetworkService.shared.getWeather(router: Router.todaysForcast, locationdetails: mapView.locationDetail) { (result) in
-                print(result.main)
-                print(result.weather)
+                self.appDelegate.weatherInfo.append(result)
 
             } onError: { (error) in
                 print(error)

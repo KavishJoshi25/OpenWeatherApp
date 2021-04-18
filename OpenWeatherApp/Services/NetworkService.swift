@@ -26,9 +26,9 @@ class NetworkService {
                 ]
         
         components.setQueryItems(with: parameters)
-        
-        guard let url = components.url else { return}        
+        guard let url = components.url else { return}
         print("url----->\(url)")
+       
         let task = session.dataTask(with: url) { (data, response, error) in
             
             DispatchQueue.main.async {

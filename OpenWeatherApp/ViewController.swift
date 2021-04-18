@@ -35,6 +35,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
         cell.textLabel?.text = appDelegate.locationArray[indexPath.row].locationName
         cell.detailTextLabel?.text = appDelegate.locationArray[indexPath.row].locationStreet
+        
+        print(appDelegate.weatherInfo)
         return cell
     }
     
