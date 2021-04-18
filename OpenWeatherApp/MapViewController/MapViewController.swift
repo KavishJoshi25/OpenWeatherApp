@@ -26,6 +26,14 @@ class MapViewController: UIViewController {
             
             appDelegate.locationArray.append(mapView.locationDetail)
             //insert(mapView.locationDetail)
+            
+            //TODO: Just to test
+            //change the static API call to dynamic
+            NetworkService.shared.getWeather { (result) in
+                print(result)
+            } onError: { (error) in
+                print(error)
+            }
         }
     }
     
