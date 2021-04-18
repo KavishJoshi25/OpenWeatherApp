@@ -14,7 +14,7 @@ struct Result: Codable {
     let wind: Wind
     let clouds: Clouds
     let dt: Int
-//    let sys: Sys
+//  let sys: Sys
     let timezone, id: Int
     let name: String
     let cod: Int
@@ -22,7 +22,7 @@ struct Result: Codable {
 
 // MARK: - Coord
 struct Coord: Codable {
-    let lon: Int
+    let lon: Double
     let lat: Double
 }
 
@@ -54,23 +54,21 @@ struct Main: Codable {
 
 // MARK: - Wind
 struct Wind: Codable {
-    let speed: Double
-    let deg: Int
-    let gust: Double
+    let speed: Double?
+    let deg: Int?
+    let gust: Double?
 }
 
 // MARK: - Clouds
 struct Clouds: Codable {
-    let all: Int
+    let all: Int?
 }
-
-
 
 // MARK: - Sys
 struct Sys: Codable {
-    let type: Int
-    let id: Int
-    let country: String
+    let type: Int?
+    let id: Int?
+    let country: String?
   
 }
 

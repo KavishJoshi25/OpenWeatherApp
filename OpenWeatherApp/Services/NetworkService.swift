@@ -15,8 +15,8 @@ class NetworkService {
     
     let URL_API_KEY = "fae7190d7e6433ec3a45285ffcf55c86"
     let URL_BASE = "https://api.openweathermap.org/data/2.5"
-    var URL_LATITUDE = "60.99"
-    var URL_LONGITUDE = "30.0"
+    var URL_LATITUDE = ""
+    var URL_LONGITUDE = ""
     var URL_GET_ONE_CALL = ""
 
     func setLatitude(_ latitude: String) {
@@ -42,13 +42,16 @@ class NetworkService {
     }
     
     
-    func getWeather(onSuccess: @escaping (Result) -> Void, onError: @escaping (String) -> Void) {
+    func getWeather(locationdetails :LocationDetail ,onSuccess: @escaping (Result) -> Void, onError: @escaping (String) -> Void) {
      
+        URL_LATITUDE = String(locationdetails.lat)
+        URL_LONGITUDE = String(locationdetails.long)
+        
         guard let url = URL(string: buildURL()) else {
             onError("Error building URL")
             return
         }
-        
+        print("url----->\(url)")
         let task = session.dataTask(with: url) { (data, response, error) in
             
             DispatchQueue.main.async {

@@ -18,12 +18,15 @@ class ViewController: UIViewController {
 
     }
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        self.tableView.reloadData()
+        self.tableView.rowHeight = UITableView.automaticDimension;
+        self.tableView.estimatedRowHeight = 60.0
     }
 
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         appDelegate.locationArray.count
     }
@@ -34,4 +37,5 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = appDelegate.locationArray[indexPath.row].locationStreet
         return cell
     }
+    
 }
