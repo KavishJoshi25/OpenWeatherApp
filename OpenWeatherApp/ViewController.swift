@@ -24,6 +24,8 @@ class ViewController: UIViewController {
         print(appDelegate.weatherInfo)
         self.updateUpperView()
         self.updateLowerView()
+        self.weatherDetailView.segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
+
     }
 
     //MARK: updateUpperView
@@ -38,22 +40,46 @@ class ViewController: UIViewController {
     }
     
     //MARK: updateLowerView
-    private func updateLowerView() {
+    private func updateLowerView(segmentIndex: Int = 0) {
+        
         let weather = self.weatherDetailView.getSelectedTitle()
         let type = Router.init(rawValue: weather)
-        
+                
         switch type {
         case .todaysForcast:
-            self.weatherDetailView.istoday = false
+            self.weatherDetailView.istoday = true
             self.weatherDetailView.updateTodaysView(result: appDelegate.weatherInfo)
 
         case .fivedaysForcast:
-            break
+            self.getFiveDaysForcast()
+            self.weatherDetailView.istoday = false
+            self.weatherDetailView.fiveDayWeather(result: appDelegate.fiveDayForcast)
+           
         default:
             self.weatherDetailView.clear()
 
         }
+    }
+    
+
+    @objc func segmentSelected(sender: UISegmentedControl)
+    {
+        let index = sender.selectedSegmentIndex
+        self.updateLowerView(segmentIndex: index)
+    }
+    
+    func getFiveDaysForcast() {
         
+        guard let locationDetails =  appDelegate.locationArray.first else {
+            return
+        }
+        
+        NetworkService.shared.getFiveDaysWeather(router: Router.fivedaysForcast, locationdetails: locationDetails) { (result) in
+            self.appDelegate.fiveDayForcast.append(result)
+
+        } onError: { (error) in
+            self.presentErrorAlertController(error: error.description)
+        }
     }
     
 }

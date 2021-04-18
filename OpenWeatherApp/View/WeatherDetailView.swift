@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherDetailView: FancyView {
     
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet weak var topLabel1: UILabel!
@@ -46,7 +47,7 @@ class WeatherDetailView: FancyView {
         
         let weatherTemperature = result.first?.main.temp
         if let temp = weatherTemperature?.rounded() {
-            topLabel1.text = "\(temp) F"
+            topLabel1.text = "\(temp) °F"
         }
         if let humid = result.first?.main.humidity {
             bottomLabel1.text = "H:\(humid)"
@@ -58,9 +59,29 @@ class WeatherDetailView: FancyView {
         let labels = [ topLabel2, topLabel3, topLabel4, topLabel5, bottomLabel2, bottomLabel3, bottomLabel4, bottomLabel5]
         
         for i in 0...labels.count - 1 {
-            labels[i]?.isEnabled = istoday
+            labels[i]?.isHidden = istoday
         }
     }
+    
+    func fiveDayWeather(result: [FiveWeekModel]) {
+        
+        let topLabels = [topLabel1, topLabel2, topLabel3, topLabel4, topLabel5], bottomLabels = [bottomLabel1, bottomLabel2, bottomLabel3, bottomLabel4, bottomLabel5]
+        for i in 0...topLabels.count - 1 {
+            topLabels[i]?.isHidden = istoday
+            
+            let weatherTemperature = result.first?.list?[i].main?.temp
+            if let temp = weatherTemperature?.rounded() {
+                topLabels[i]?.text =  "\(temp) °F"
+            }
+            
+            if let humid = result.first?.list?[i].main?.humidity {
+                bottomLabels[i]?.text = "H:\(humid)"
+            }
+            
+            
+        }
+    }
+    
     
 }
     
