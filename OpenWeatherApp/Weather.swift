@@ -14,7 +14,7 @@ struct Result: Codable {
     let wind: Wind
     let clouds: Clouds
     let dt: Int
-//  let sys: Sys
+  let sys: Sys
     let timezone, id: Int
     let name: String
     let cod: Int
@@ -69,7 +69,8 @@ struct Sys: Codable {
     let type: Int?
     let id: Int?
     let country: String?
-  
+    let sunrise: Int64?
+    let sunset: Int64?
 }
 
 //MARK: LocationDetail

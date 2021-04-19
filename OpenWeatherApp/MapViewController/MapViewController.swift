@@ -25,8 +25,7 @@ class MapViewController: UIViewController {
         if !mapView.locationDetail.locationName.isEmpty && !mapView.locationDetail.locationName.isEmpty {
             
             appDelegate.locationArray.append(mapView.locationDetail)            
-            //TODO: Just to test
-            //change the static API call to dynamic            
+
             NetworkService.shared.getWeather(router: Router.todaysForcast, locationdetails: mapView.locationDetail) { (result) in
                 self.appDelegate.weatherInfo.append(result)
 

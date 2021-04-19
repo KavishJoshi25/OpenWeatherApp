@@ -52,5 +52,77 @@ class WeatherManager {
         return dow
     }
     
+    static func convertUnixTime(time: Int64?, timeZone: Int64) -> String {
+        var convertedDate = ""
+        
+        if let unixTime = time {
+            let date = Date(timeIntervalSince1970: TimeInterval(unixTime))
+            let dateFormatter = DateFormatter()
+            let timezone = TimeZone(secondsFromGMT: Int(timeZone))
+            dateFormatter.timeZone = timezone
+            dateFormatter.locale = NSLocale.current
+            dateFormatter.timeStyle = .short // ex. 07.43 AM
+            convertedDate = dateFormatter.string(from: date)
+        }
+        
+        return convertedDate
+    }
+    
+    static func getWeatherSysImgName(weather id: Int, isNight: Bool = false) -> String {
+        var imgString = ""
+        let index = (id.description.first)
+        
+        if index == "2" {
+            imgString = "cloud.bolt.rain.fill"
+        }
+        else if index == "3" {
+            imgString = "cloud.drizzle.fill"
+        }
+        else if index == "5" {
+            if id < 502 {
+                imgString = "cloud.rain.fill"
+            } else if id < 511 {
+                imgString = "cloud.heavyrain.fill"
+            } else if id == 511 {
+                imgString = "snow"
+            } else  if id > 519 && id < 540 {
+                imgString = "cloud.hail.fill"
+            }
+        }
+        else if index == "6" {
+            if id >= 600 && id < 603 {
+                imgString = "snow"
+            } else if id > 603 && id < 625 {
+                imgString = "cloud.snow.fill"
+            }
+        }
+        else if index == "7" {
+            if id == 701 || ( id > 720 && id < 750 ){
+               imgString = "cloud.fog.fill"
+            } else if id == 711 {
+                imgString = "smoke.fill"
+            } else if id > 750 && id < 770 {
+                imgString = "sun.dust.fill"
+            } else if id > 770 && id < 790 {
+                imgString = "tornado"
+            }
+        } else if index == "8" {
+            if id == 800 {
+                imgString = "sun.max.fill"
+                if isNight {
+                    imgString = "moon.stars.fill"
+                }
+            } else if id == 801 {
+                imgString = "cloud.sun.fill"
+                if isNight {
+                    imgString = "cloud.moon.fill"
+                }
+            } else if id == 802 || id == 803 || id == 804 {
+                imgString = "cloud.fill"
+            }
+        }
+
+        return imgString
+    }
 }
 

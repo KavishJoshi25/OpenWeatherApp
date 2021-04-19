@@ -9,7 +9,6 @@ import UIKit
 
 class RightNowView: FancyView {
     
-    @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var weatherLabel: UILabel!
     @IBOutlet private weak var temperature: UILabel!
@@ -25,14 +24,17 @@ class RightNowView: FancyView {
             if let city = weatherInfo?.name {
                 self.cityLabel.text = city
             }
+            
             if let weather = weatherInfo?.weather.first?.weatherDescription {
                 self.weatherLabel.text = weather.capitalized
             }
-            self.setDayAndDate()
+            
             self.dayLabel.text = "TODAY"
+            
             if let temp = weatherInfo?.main.temp {
                 self.temperature.text = WeatherManager.convertTemp(temp: temp, from: .kelvin, to: .celsius, tempStringUnit: .withDegree)
             }
+            
             self.dayOfWeekLabel.text = WeatherManager.getDayOfWeek(date: Date())
             
             if let tempMin = weatherInfo?.main.tempMin {
@@ -45,8 +47,4 @@ class RightNowView: FancyView {
         }
     }
     
-    
-    private func setDayAndDate()  {
-        self.dateLabel.text =  Date.getCurrentDate()
-    }
 }

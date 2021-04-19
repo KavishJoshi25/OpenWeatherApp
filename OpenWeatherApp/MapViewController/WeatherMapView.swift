@@ -77,7 +77,6 @@ class WeatherMapView: MKMapView {
     
     private func addGestures() {
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressMap(sender:)))
-        //UITapGestureRecognizer(target: self, action:#selector(handleTap(gestureRecognizer:)))
         self.addGestureRecognizer(gestureRecognizer)
     }
     
