@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A7EF03B262C48D900A56C81 /* WeatherDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EF03A262C48D900A56C81 /* WeatherDetailView.swift */; };
 		7A7EF041262C4FF200A56C81 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EF040262C4FF200A56C81 /* GeneralExtensions.swift */; };
 		7A7EF049262C99E100A56C81 /* FiveDayForcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EF048262C99E100A56C81 /* FiveDayForcastModel.swift */; };
+		7A933C66262DCC73006E1D07 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A933C65262DCC73006E1D07 /* WeatherManager.swift */; };
 		7AF22E5A262AD3AF00A9CCDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF22E59262AD3AF00A9CCDA /* AppDelegate.swift */; };
 		7AF22E5C262AD3AF00A9CCDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF22E5B262AD3AF00A9CCDA /* SceneDelegate.swift */; };
 		7AF22E5E262AD3AF00A9CCDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF22E5D262AD3AF00A9CCDA /* ViewController.swift */; };
@@ -45,9 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7A7EF03A262C48D900A56C81 /* WeatherDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailView.swift; sourceTree = "<group>"; };
 		7A7EF040262C4FF200A56C81 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
 		7A7EF048262C99E100A56C81 /* FiveDayForcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForcastModel.swift; sourceTree = "<group>"; };
+		7A933C65262DCC73006E1D07 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		7AF22E56262AD3AF00A9CCDA /* OpenWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF22E59262AD3AF00A9CCDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AF22E5B262AD3AF00A9CCDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,12 +96,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A7EF03F262C4FC600A56C81 /* Extensions */ = {
+		7A7EF03F262C4FC600A56C81 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				7A7EF040262C4FF200A56C81 /* GeneralExtensions.swift */,
+				7A933C65262DCC73006E1D07 /* WeatherManager.swift */,
 			);
-			name = Extensions;
+			name = Common;
 			sourceTree = "<group>";
 		};
 		7AF22E4D262AD3AF00A9CCDA = {
@@ -130,7 +131,7 @@
 				7AF22E8E262AD46E00A9CCDA /* Controller */,
 				7AF22E8D262AD45E00A9CCDA /* View */,
 				7AF22E8C262AD44800A9CCDA /* Model */,
-				7A7EF03F262C4FC600A56C81 /* Extensions */,
+				7A7EF03F262C4FC600A56C81 /* Common */,
 				7AF22E8F262AD47E00A9CCDA /* Services */,
 				7AF22E59262AD3AF00A9CCDA /* AppDelegate.swift */,
 				7AF22E5B262AD3AF00A9CCDA /* SceneDelegate.swift */,
@@ -174,7 +175,6 @@
 			children = (
 				7AF22EB5262C263800A9CCDA /* RightNowView.swift */,
 				7AF22EBA262C266C00A9CCDA /* Fancy.swift */,
-				7A7EF03A262C48D900A56C81 /* WeatherDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,10 +342,10 @@
 				7AF22E95262ADEBC00A9CCDA /* Weather.swift in Sources */,
 				7AF22EB6262C263800A9CCDA /* RightNowView.swift in Sources */,
 				7A7EF041262C4FF200A56C81 /* GeneralExtensions.swift in Sources */,
-				7A7EF03B262C48D900A56C81 /* WeatherDetailView.swift in Sources */,
 				7AF22E5E262AD3AF00A9CCDA /* ViewController.swift in Sources */,
 				7AF22E5A262AD3AF00A9CCDA /* AppDelegate.swift in Sources */,
 				7AF22E9D262AE45F00A9CCDA /* MapViewController.swift in Sources */,
+				7A933C66262DCC73006E1D07 /* WeatherManager.swift in Sources */,
 				7AF22E5C262AD3AF00A9CCDA /* SceneDelegate.swift in Sources */,
 				7AF22EAA262BE3EF00A9CCDA /* NetworkService.swift in Sources */,
 				7AF22EBB262C266C00A9CCDA /* Fancy.swift in Sources */,
