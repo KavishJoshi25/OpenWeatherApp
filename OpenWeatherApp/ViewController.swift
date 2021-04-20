@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         let width = UIScreen.main.bounds.width
         
         layout.itemSize = CGSize(width: width, height: 100)
-        layout.headerSize = CGSize(width: width, height: 0)
+        layout.headerSize = CGSize(width: width, height: 270)
         layout.cellTodayWeatherSize = CGSize(width: width, height: 100)
         layout.cellWeeklyWeatherSize = CGSize(width: width, height: 210)
         layout.cellSummaryWeatherSize = CGSize(width: width, height: 70)
@@ -96,6 +96,8 @@ extension ViewController: UICollectionViewDataSource {
             
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeeklyWeatherCell", for: indexPath) as! WeeklyWeatherCell
+            let array = avg5DaysForecast()
+            cell.forecastArray = array
             cell.collectionView.reloadData()
             return cell
             
@@ -161,6 +163,7 @@ extension ViewController {
                 let timeArray = result.compactMap {
                     (($0.dtTxt).components(separatedBy: ":")).first
                 }
+                
                 let currentTime = (WeatherManager.getCurrentTime().components(separatedBy: ":")).first ?? ""
                 let timeSubArray = timeArray.compactMap { abs((Int($0) ?? 0) - (Int(currentTime) ?? 0)) }
                 for i in 0..<timeSubArray.count {
@@ -185,18 +188,4 @@ extension ViewController {
         return totAvgArray
     }
 
-}
-
-struct WeeklyForecast {
-    let date: String
-    let weatherId: Int
-    let temp_max: Double
-    let temp_min: Double
-    
-    init(date: String, weatherId: Int, temp_max: Double, temp_min: Double) {
-        self.date = date
-        self.weatherId = weatherId
-        self.temp_max = temp_max
-        self.temp_min = temp_min
-    }
 }

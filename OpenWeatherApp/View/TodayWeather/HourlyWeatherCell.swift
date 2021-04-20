@@ -19,7 +19,7 @@ class HourlyWeatherCell: UICollectionViewCell {
         didSet {
             if let data = forecast {
                 
-                 let timeData = data.dtTxt 
+                 let timeData = data.dtTxt
                     let dateComp = timeData.components(separatedBy: " ")
                     let dateStr = dateComp.last ?? ""
                     
@@ -38,7 +38,6 @@ class HourlyWeatherCell: UICollectionViewCell {
                             isNight = false
                         }
                     }
-                
                 
                 if let weatherId = data.weather?.first?.id {
                     let imgString = WeatherManager.getWeatherSysImgName(weather:  weatherId , isNight: isNight)

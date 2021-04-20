@@ -11,7 +11,7 @@ class WeeklyWeatherCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var forecastArray: [FiveWeekModel]?
+    var forecastArray: [WeeklyForecast]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +34,7 @@ extension WeeklyWeatherCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekdayWeatherCell", for: indexPath) as! WeekdayWeatherCell
+        cell.forecast = forecastArray?[indexPath.row]
         return cell
     }
 }

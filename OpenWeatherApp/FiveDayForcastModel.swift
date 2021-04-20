@@ -129,3 +129,17 @@ struct Rain: Codable {
     }
 }
 
+
+struct WeeklyForecast {
+    let date: String
+    let weatherId: Int
+    let temp_max: Double
+    let temp_min: Double
+    
+    init(date: String, weatherId: Int, temp_max: Double, temp_min: Double) {
+        self.date = date
+        self.weatherId = weatherId
+        self.temp_max = temp_max
+        self.temp_min = temp_min
+    }
+}
