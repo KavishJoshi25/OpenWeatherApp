@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         let width = UIScreen.main.bounds.width
         
         layout.itemSize = CGSize(width: width, height: 100)
-        layout.headerSize = CGSize(width: width, height: 270)
+        layout.headerSize = CGSize(width: width, height: 0)
         layout.cellTodayWeatherSize = CGSize(width: width, height: 100)
         layout.cellWeeklyWeatherSize = CGSize(width: width, height: 210)
         layout.cellSummaryWeatherSize = CGSize(width: width, height: 70)

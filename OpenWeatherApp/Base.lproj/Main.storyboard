@@ -118,12 +118,11 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWi-LH-dYF">
-                                <rect key="frame" x="0.0" y="365" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="231" width="414" height="582"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A4d-tw-frW">
-                                        <rect key="frame" x="0.0" y="-140.5" width="414" height="818"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A4d-tw-frW">
+                                        <rect key="frame" x="0.0" y="8" width="414" height="574"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewLayout key="collectionViewLayout" id="Kaz-fm-sit" customClass="WeatherLayout" customModule="OpenWeatherApp" customModuleProvider="target"/>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayWeatherCell" id="D24-AH-dcr" customClass="TodayWeatherCell" customModule="OpenWeatherApp" customModuleProvider="target">
@@ -231,7 +230,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="jgm-aD-tXh" secondAttribute="trailing" id="qyV-Vt-LFk"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <size key="customSize" width="414" height="125"/>
                                                 <connections>
                                                     <outlet property="collectionView" destination="gas-xx-0xG" id="Wd0-HN-mbm"/>
@@ -725,7 +724,13 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="A4d-tw-frW" firstAttribute="top" secondItem="JWi-LH-dYF" secondAttribute="top" constant="8" id="9f7-cq-bI6"/>
+                                    <constraint firstItem="A4d-tw-frW" firstAttribute="leading" secondItem="JWi-LH-dYF" secondAttribute="leading" id="MwE-dn-L38"/>
+                                    <constraint firstAttribute="trailing" secondItem="A4d-tw-frW" secondAttribute="trailing" id="kCW-Fr-Gk3"/>
+                                    <constraint firstAttribute="bottom" secondItem="A4d-tw-frW" secondAttribute="bottom" id="moU-Qy-rWu"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -735,8 +740,8 @@
                             <constraint firstItem="JWi-LH-dYF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FwR-zR-fDP"/>
                             <constraint firstItem="0Ud-Fu-kD6" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.2" id="VMe-eN-TJu"/>
                             <constraint firstItem="JWi-LH-dYF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="WOz-8v-kd9"/>
+                            <constraint firstItem="JWi-LH-dYF" firstAttribute="top" secondItem="0Ud-Fu-kD6" secondAttribute="bottom" constant="8" symbolic="YES" id="WVW-Zw-6dg"/>
                             <constraint firstItem="0Ud-Fu-kD6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="d6v-wE-ITC"/>
-                            <constraint firstItem="JWi-LH-dYF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="gpl-Yz-Sy5"/>
                             <constraint firstItem="0Ud-Fu-kD6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uIq-Q2-Pdf"/>
                             <constraint firstItem="JWi-LH-dYF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="z50-0K-rVi"/>
                         </constraints>
