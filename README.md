@@ -1,7 +1,10 @@
 
 Steps to Use the App:
+
 Step1: Zoom and long press on particular location.
+
 Step2: Add to favorite
+
 Step3: Go to home page you will find data related to seleted location.
 
 
