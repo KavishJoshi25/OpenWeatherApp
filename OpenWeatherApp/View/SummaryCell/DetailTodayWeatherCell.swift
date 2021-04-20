@@ -22,8 +22,7 @@ class DetailTodayWeatherCell: UICollectionViewCell {
         didSet {
             if let data = result {
                 
-                //self.timezone = result.timezone
-                cloudsLabel.text = String(format: "%d %@", "\(data.clouds.all ?? 0)", "%")
+                cloudsLabel.text = String(format: "%@", "\(data.clouds.all ?? 0)%")
                 
                 let spd = result?.wind.speed ?? 0
                 let speed = Measurement(value: spd, unit: UnitSpeed.metersPerSecond).description
@@ -45,7 +44,7 @@ class DetailTodayWeatherCell: UICollectionViewCell {
                 sunriseLabel.text = WeatherManager.convertUnixTime(time: data.sys.sunset, timeZone: Int64(data.timezone))
                 sunsetLabel.text = WeatherManager.convertUnixTime(time: data.sys.sunrise, timeZone: Int64(data.timezone))
                 
-                humidityLabel.text = String(format: "%d %@","\(data.main.humidity)" , "%")
+                humidityLabel.text = String(format: "%@","\(data.main.humidity)%")
                 feelslikeLabel.text = WeatherManager.convertTemp(temp: data.main.feelsLike, from: .kelvin, to: .celsius, tempStringUnit: .withDegree)
                 
                 let pressure = Measurement(value: Double(data.main.pressure), unit: UnitPressure.hectopascals)
