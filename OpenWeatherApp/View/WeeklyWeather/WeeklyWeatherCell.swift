@@ -20,7 +20,7 @@ class WeeklyWeatherCell: UICollectionViewCell {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: cellHeight)
         }
-    
+        
     }
 }
 

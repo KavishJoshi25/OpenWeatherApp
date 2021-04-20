@@ -17,7 +17,7 @@ enum DateFormats: String {
 }
 
 extension String {
-     func toDate(format: DateFormats) -> Date? {
+    func toDate(format: DateFormats) -> Date? {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.dateFormat = format.rawValue
@@ -34,13 +34,6 @@ extension Date {
         return dateFormatter.string(from: Date())
         
     }
-    
-    public var removeTimeStamp : Date? {
-          guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
-           return nil
-          }
-          return date
-      }
     
     func toString(format: DateFormats) -> String {
         let formatter = DateFormatter()
@@ -72,13 +65,13 @@ extension Date {
 
 
 extension UIViewController {
-
+    
     func presentOkAlertController(title: String, message: String) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(ac, animated: true, completion: nil)
     }
-
+    
     func presentErrorAlertController(error: String) {
         let ac = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

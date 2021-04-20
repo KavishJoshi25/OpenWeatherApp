@@ -101,7 +101,7 @@ enum MainEnum: String, Codable {
     case clear = "Clear"
     case clouds = "Clouds"
     case rain = "Rain"
-
+    
 }
 
 enum FDescription: String, Codable {
@@ -123,7 +123,7 @@ struct FWind: Codable {
 // MARK: - Rain
 struct Rain: Codable {
     let the3H: Double?
-
+    
     enum CodingKeys: String, CodingKey {
         case the3H = "3h"
     }

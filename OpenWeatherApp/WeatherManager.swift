@@ -13,7 +13,7 @@ enum UnitTemperatureType: String {
 }
 
 class WeatherManager {
-
+    
     static func convertTemp(temp: Double, from inputTempType: UnitTemperature, to outputTempType: UnitTemperature, tempStringUnit: UnitTemperatureType) -> String {
         let mf = MeasurementFormatter()
         mf.numberFormatter.maximumFractionDigits = 0
@@ -98,7 +98,7 @@ class WeatherManager {
         }
         else if index == "7" {
             if id == 701 || ( id > 720 && id < 750 ){
-               imgString = "cloud.fog.fill"
+                imgString = "cloud.fog.fill"
             } else if id == 711 {
                 imgString = "smoke.fill"
             } else if id > 750 && id < 770 {
@@ -121,7 +121,7 @@ class WeatherManager {
                 imgString = "cloud.fill"
             }
         }
-
+        
         return imgString
     }
     

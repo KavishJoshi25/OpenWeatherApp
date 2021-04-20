@@ -12,6 +12,7 @@ import UIKit
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: WeatherMapView!
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     
@@ -20,8 +21,8 @@ class MapViewController: UIViewController {
         mapView.setupMapView()
     }
     
-    
     @IBAction func addFavouriteAction() {
+        
         if !mapView.locationDetail.locationName.isEmpty && !mapView.locationDetail.locationName.isEmpty {
             
             appDelegate.locationArray.append(mapView.locationDetail)            
@@ -32,9 +33,7 @@ class MapViewController: UIViewController {
             } onError: { (error) in
                 self.presentErrorAlertController(error: error.description)
             }
-            
         }
-        
     }
     
 }

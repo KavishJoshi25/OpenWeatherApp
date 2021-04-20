@@ -11,7 +11,7 @@ let SHADOW_GRAY: CGFloat = 120.0 / 255.0
 
 @IBDesignable
 class FancyView: UIView {
-
+    
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         self.customizeView()
@@ -29,12 +29,12 @@ class FancyView: UIView {
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         layer.cornerRadius = 10.0
     }
-
+    
 }
 
 @IBDesignable
 class FancyButton: UIButton {
-
+    
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         self.customizeView()
@@ -52,7 +52,7 @@ class FancyButton: UIButton {
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         layer.cornerRadius = 10.0
     }
-
+    
 }
 
 @IBDesignable

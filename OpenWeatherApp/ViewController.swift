@@ -12,21 +12,18 @@ class ViewController: UIViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet private weak var upperView: RightNowView!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCollectionViewLayout()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.updateUpperView()
         self.getFiveDaysForcast()
-
     }
-
+    
     //MARK: updateUpperView
     private func updateUpperView() {
         self.upperView.weatherInfo = appDelegate.weatherInfo.first
@@ -43,8 +40,8 @@ class ViewController: UIViewController {
             
             self.appDelegate.fiveDayForcast.append(result)
             self.collectionView.reloadData()
-
-
+            
+            
         } onError: { (error) in
             self.presentErrorAlertController(error: error.description)
         }
@@ -54,9 +51,9 @@ class ViewController: UIViewController {
         guard
             let collectionView = collectionView,
             let layout = collectionView.collectionViewLayout as? WeatherLayout else {
-                return
+            return
         }
-                
+        
         let width = UIScreen.main.bounds.width
         
         layout.itemSize = CGSize(width: width, height: 100)
@@ -119,12 +116,11 @@ extension ViewController {
     private func get2DaysForecast() -> [FList] {
         var twoDaysArr: [FList] = []
         if let arr = self.appDelegate.fiveDayForcast.first?.list,  arr.count  > 0  {
-                for i in 0..<12 {
-                    
-                        twoDaysArr.append(arr[i] )
-                }
+            for i in 0..<12 {
+                twoDaysArr.append(arr[i] )
+            }
         }
-       
+        
         return twoDaysArr
     }
     
@@ -170,7 +166,7 @@ extension ViewController {
                 
                 let weatherArray = result.compactMap { $0.weather?.first?.id }
                 let weatherId = weatherArray[weatherIndex]
-                                
+                
                 let dateComp = day.components(separatedBy: " ")
                 let dateStr = dateComp.first ?? ""
                 
@@ -182,8 +178,8 @@ extension ViewController {
             }
             
         }
-                
+        
         return totAvgArray.unique(by: \.date)
     }
-
+    
 }

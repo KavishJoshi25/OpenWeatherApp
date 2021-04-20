@@ -24,7 +24,6 @@ class WeekdayWeatherCell: UICollectionViewCell {
                     let dow = WeatherManager.getDayOfWeek(date: date)
                     dayLabel.text = dow
                 }
-            
                 tempMaxLabel.text = WeatherManager.convertTemp(temp: data.temp_max, from: .kelvin, to: .celsius, tempStringUnit: .nonDegree)
                 tempMinLabel.text = WeatherManager.convertTemp(temp: data.temp_min, from: .kelvin, to: .celsius, tempStringUnit: .nonDegree)
             }

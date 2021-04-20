@@ -14,21 +14,21 @@ class NetworkService {
     let session = URLSession(configuration: .default)
     
     func getWeather(router : Router ,locationdetails: LocationDetail,onSuccess: @escaping (Result) -> Void, onError: @escaping (String) -> Void) {
-     
+        
         var components = URLComponents()
         components.scheme = router.scheme
         components.host = router.host
         components.path = router.path
         let parameters: [String: String] = [
-                    "lat": String(locationdetails.lat),
-                    "lon": String(locationdetails.long),
+            "lat": String(locationdetails.lat),
+            "lon": String(locationdetails.long),
             "appid": router.accessToken
-                ]
+        ]
         
         components.setQueryItems(with: parameters)
         guard let url = components.url else { return}
         print("url----->\(url)")
-       
+        
         let task = session.dataTask(with: url) { (data, response, error) in
             
             DispatchQueue.main.async {
@@ -60,21 +60,21 @@ class NetworkService {
     
     
     func getFiveDaysWeather(router : Router ,locationdetails: LocationDetail,onSuccess: @escaping (FiveWeekModel) -> Void, onError: @escaping (String) -> Void) {
-     
+        
         var components = URLComponents()
         components.scheme = router.scheme
         components.host = router.host
         components.path = router.path
         let parameters: [String: String] = [
-                    "lat": String(locationdetails.lat),
-                    "lon": String(locationdetails.long),
+            "lat": String(locationdetails.lat),
+            "lon": String(locationdetails.long),
             "appid": router.accessToken
-                ]
+        ]
         
         components.setQueryItems(with: parameters)
         guard let url = components.url else { return}
         print("url----->\(url)")
-       
+        
         let task = session.dataTask(with: url) { (data, response, error) in
             
             DispatchQueue.main.async {

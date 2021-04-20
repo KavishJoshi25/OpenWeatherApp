@@ -18,12 +18,10 @@ class DetailTodayWeatherCell: UICollectionViewCell {
     @IBOutlet weak var visibilityLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     
-    
-    
     var result: Result? {
         didSet {
             if let data = result {
-                                
+                
                 //self.timezone = result.timezone
                 cloudsLabel.text = String(format: "%d %@", "\(data.clouds.all ?? 0)", "%")
                 
@@ -41,20 +39,18 @@ class DetailTodayWeatherCell: UICollectionViewCell {
                     let doubleVal = intVal.converted(to: .kilometers)
                     visibilityLabel.text = doubleVal.description
                 }
+                                
+                //sunset
+                //sunrise
+                sunriseLabel.text = WeatherManager.convertUnixTime(time: data.sys.sunset, timeZone: Int64(data.timezone))
+                sunsetLabel.text = WeatherManager.convertUnixTime(time: data.sys.sunrise, timeZone: Int64(data.timezone))
                 
-                
-                
-                    //sunset
-                    //sunrise
-                    sunriseLabel.text = WeatherManager.convertUnixTime(time: data.sys.sunset, timeZone: Int64(data.timezone))
-                    sunsetLabel.text = WeatherManager.convertUnixTime(time: data.sys.sunrise, timeZone: Int64(data.timezone))
-
                 humidityLabel.text = String(format: "%d %@","\(data.main.humidity)" , "%")
-                       feelslikeLabel.text = WeatherManager.convertTemp(temp: data.main.feelsLike, from: .kelvin, to: .celsius, tempStringUnit: .withDegree)
-
-                       let pressure = Measurement(value: Double(data.main.pressure), unit: UnitPressure.hectopascals)
-                       pressureLabel.text = pressure.description
-    
+                feelslikeLabel.text = WeatherManager.convertTemp(temp: data.main.feelsLike, from: .kelvin, to: .celsius, tempStringUnit: .withDegree)
+                
+                let pressure = Measurement(value: Double(data.main.pressure), unit: UnitPressure.hectopascals)
+                pressureLabel.text = pressure.description
+                
                 
             }
         }

@@ -12,7 +12,7 @@ class TodayWeatherCell: UICollectionViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var forecastArray: [FList]?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.dataSource = self

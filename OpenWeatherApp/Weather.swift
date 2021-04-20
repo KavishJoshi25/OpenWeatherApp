@@ -14,7 +14,7 @@ struct Result: Codable {
     let wind: Wind
     let clouds: Clouds
     let dt: Int
-  let sys: Sys
+    let sys: Sys
     let timezone, id: Int
     let name: String
     let cod: Int
@@ -30,7 +30,7 @@ struct Coord: Codable {
 struct Weather: Codable {
     let id: Int
     let main, weatherDescription, icon: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, main
         case weatherDescription = "description"
@@ -42,7 +42,7 @@ struct Weather: Codable {
 struct Main: Codable {
     let temp, feelsLike, tempMin, tempMax: Double
     let pressure, humidity: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"
