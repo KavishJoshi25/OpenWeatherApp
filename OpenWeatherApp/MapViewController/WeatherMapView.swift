@@ -38,7 +38,8 @@ class WeatherMapView: MKMapView {
     private(set) var locationDetail = LocationDetail()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let locationManager = CLLocationManager()
-    
+    let annotation = MKPointAnnotation()
+
     public func setupMapView() {
         delegate = self
         self.showsUserLocation = true
@@ -65,8 +66,6 @@ class WeatherMapView: MKMapView {
         }
     }
     
-    
-    
     private func reloadMap() {
         //Zoom to user location
         if let userLocation = locationManager.location?.coordinate {
@@ -80,13 +79,20 @@ class WeatherMapView: MKMapView {
         self.addGestureRecognizer(gestureRecognizer)
     }
     
+    private func removeAllArray() {
+        appDelegate.fiveDayForcast.removeAll()
+        appDelegate.locationArray.removeAll()
+        appDelegate.weatherInfo.removeAll()
+    }
+    
     
     @objc func didLongPressMap(sender: UILongPressGestureRecognizer) {
+        
+        self.removeAllArray()
         
         if sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: self)
             let touchCoordinate = self.convert(touchPoint, toCoordinateFrom: self)
-            let annotation = MKPointAnnotation()
             annotation.coordinate = touchCoordinate
             annotation.title = ""
             self.addAnnotation(annotation) //drops the pin
@@ -143,7 +149,7 @@ class WeatherMapView: MKMapView {
                                                         
                                                     }
                                                     self.locationDetail = LocationDetail(locationName: location, locationStreet: street, lat: touchCoordinate.latitude, long: touchCoordinate.longitude)
-                                                    annotation.title = street + "\n" + location
+                                                    self.annotation.title = street + "\n" + location
                                                     
                                                 })        }
     }
