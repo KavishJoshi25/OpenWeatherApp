@@ -7,6 +7,24 @@
 import Foundation
 import UIKit
 
+enum DateFormats: String {
+    case yyyyMMdd = "yyyy-MM-dd"
+    case yyyyMMddHHmmssZ = "yyyy-MM-dd HH:mm:ssZ"
+    case yyyyMMddHHmm = "yyyy-MM-dd HH:mm"
+    case yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss"
+    case MMMddyyyy = "MMMM dd, yyyy"
+    case EdMMMyyyyHHmmssZ = "E, d MMM yyyy HH:mm:ss Z"
+}
+
+extension String {
+     func toDate(format: DateFormats) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.dateFormat = format.rawValue
+        return formatter.date(from: self)
+    }
+}
+
 extension Date {
     
     static func getCurrentDate() -> String {
@@ -15,6 +33,27 @@ extension Date {
         dateFormatter.dateFormat = "MMM d, yyyy"
         return dateFormatter.string(from: Date())
         
+    }
+    
+    public var removeTimeStamp : Date? {
+          guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
+           return nil
+          }
+          return date
+      }
+    
+    func toString(format: DateFormats) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.dateFormat = format.rawValue
+        return formatter.string(from: self)
+    }
+    
+    func dateAndTimetoString(format: DateFormats) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.dateFormat = format.rawValue
+        return formatter.string(from: self)
     }
     
     static func getHourFrom(date: Date) -> String {
@@ -28,7 +67,6 @@ extension Date {
         }
         return string
     }
-    
     
 }
 
@@ -52,5 +90,19 @@ extension Array where Element: Hashable {
     func removeDuplicates() -> [Element] {
         var addedDict = [Element: Bool]()
         return filter { addedDict.updateValue(true, forKey: $0) == nil }
+    }
+    
+}
+
+extension Array {
+    func unique<T: Hashable>(by keyPath: KeyPath<Element, T>) -> [Element] {
+        var set = Set<T>()
+        return self.reduce(into: [Element]()) { result, value in
+            guard !set.contains(value[keyPath: keyPath]) else {
+                return
+            }
+            set.insert(value[keyPath: keyPath])
+            result.append(value)
+        }
     }
 }

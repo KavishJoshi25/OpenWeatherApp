@@ -11,7 +11,6 @@ import UIKit
 
 class WeatherLayout: UICollectionViewFlowLayout {
     enum Element: String {
-        case headerSize
         case WeatherHeaderView
         case TodayWeatherCell
         case WeeklyWeatherCell
@@ -80,7 +79,6 @@ class WeatherLayout: UICollectionViewFlowLayout {
 
 // MARK: - LAYOUT CORE PROCESS
 extension WeatherLayout {
-    
     override func prepare() {
         guard let collectionView = collectionView, cache.isEmpty else { return }
         prepareCache()

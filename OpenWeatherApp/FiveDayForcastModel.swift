@@ -130,7 +130,8 @@ struct Rain: Codable {
 }
 
 
-struct WeeklyForecast {
+struct WeeklyForecast: Hashable {
+    
     let date: String
     let weatherId: Int
     let temp_max: Double

@@ -56,11 +56,6 @@ class ViewController: UIViewController {
             let layout = collectionView.collectionViewLayout as? WeatherLayout else {
                 return
         }
-        
-        collectionView.register(UINib(nibName: "WeatherHeaderView", bundle: nil),
-                                forSupplementaryViewOfKind: WeatherLayout.Element.WeatherHeaderView.kind,
-                                withReuseIdentifier: WeatherLayout.Element.WeatherHeaderView.id)
-
                 
         let width = UIScreen.main.bounds.width
         
@@ -172,20 +167,23 @@ extension ViewController {
                         weatherIndex = i
                     }
                 }
-
+                
                 let weatherArray = result.compactMap { $0.weather?.first?.id }
                 let weatherId = weatherArray[weatherIndex]
-
+                                
+                let dateComp = day.components(separatedBy: " ")
+                let dateStr = dateComp.first ?? ""
                 
-                let weeklyForecast = WeeklyForecast(date: day,
+                let weeklyForecast = WeeklyForecast(date: dateStr,
                                                     weatherId: weatherId,
                                                     temp_max: Double(avgTempMax),
                                                     temp_min: Double(avgTempMin))
                 totAvgArray.append(weeklyForecast)
             }
+            
         }
-        
-        return totAvgArray
+                
+        return totAvgArray.unique(by: \.date)
     }
 
 }
