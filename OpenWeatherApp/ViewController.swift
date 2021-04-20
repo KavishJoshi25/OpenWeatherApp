@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         let width = UIScreen.main.bounds.width
         
         layout.itemSize = CGSize(width: width, height: 100)
-        layout.headerSize = CGSize(width: width, height: 270)
+        layout.headerSize = CGSize(width: width, height: 0)
         layout.cellTodayWeatherSize = CGSize(width: width, height: 100)
         layout.cellWeeklyWeatherSize = CGSize(width: width, height: 210)
         layout.cellSummaryWeatherSize = CGSize(width: width, height: 70)
@@ -106,6 +106,7 @@ extension ViewController: UICollectionViewDataSource {
             
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCell", for: indexPath) as! DetailTodayWeatherCell
+            cell.result = appDelegate.weatherInfo.first
             return cell
             
         default:
@@ -128,5 +129,74 @@ extension ViewController {
         }
        
         return twoDaysArr
+    }
+    
+    private func avg5DaysForecast() -> [WeeklyForecast] {
+        var totAvgArray: [WeeklyForecast] = []
+        
+        if let arr = appDelegate.fiveDayForcast.first?.list {
+            let days = arr.compactMap { $0.dtTxt }
+            
+            let dayArray = days.removeDuplicates()
+            
+            for day in dayArray {
+                let result = arr.filter { $0.dtTxt == day }
+                
+                // tempMax
+                let tempMaxArray = result.compactMap { $0.main?.tempMax }
+                let sumTempMax = tempMaxArray.reduce(0) { acc, element in
+                    return acc + Int(element)
+                }
+                let avgTempMax = sumTempMax / result.count
+                
+                // tempMin
+                let tempMinArray = result.compactMap { $0.main?.tempMax }
+                let sumTempMin = tempMinArray.reduce(0) { acc, element in
+                    return acc + Int(element)
+                }
+                let avgTempMin = sumTempMin / result.count
+                
+                // weatherIndex
+                var weatherIndex = 0
+                let timeArray = result.compactMap {
+                    (($0.dtTxt).components(separatedBy: ":")).first
+                }
+                let currentTime = (WeatherManager.getCurrentTime().components(separatedBy: ":")).first ?? ""
+                let timeSubArray = timeArray.compactMap { abs((Int($0) ?? 0) - (Int(currentTime) ?? 0)) }
+                for i in 0..<timeSubArray.count {
+                    let item = timeSubArray[i]
+                    if item == timeSubArray.min() {
+                        weatherIndex = i
+                    }
+                }
+
+                let weatherArray = result.compactMap { $0.weather?.first?.id }
+                let weatherId = weatherArray[weatherIndex]
+
+                
+                let weeklyForecast = WeeklyForecast(date: day,
+                                                    weatherId: weatherId,
+                                                    temp_max: Double(avgTempMax),
+                                                    temp_min: Double(avgTempMin))
+                totAvgArray.append(weeklyForecast)
+            }
+        }
+        
+        return totAvgArray
+    }
+
+}
+
+struct WeeklyForecast {
+    let date: String
+    let weatherId: Int
+    let temp_max: Double
+    let temp_min: Double
+    
+    init(date: String, weatherId: Int, temp_max: Double, temp_min: Double) {
+        self.date = date
+        self.weatherId = weatherId
+        self.temp_max = temp_max
+        self.temp_min = temp_min
     }
 }

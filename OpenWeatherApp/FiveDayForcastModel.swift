@@ -25,11 +25,13 @@ struct FList: Codable {
     let visibility: Int64?
     let pop: Double?
     let sys: FSys?
-    let dtTxt: String?
+    let dtTxt: String
+    let rain: Rain?
     
     enum CodingKeys: String, CodingKey {
         case dt, main, weather, clouds, wind, visibility, pop, sys
         case dtTxt = "dt_txt"
+        case rain
     }
 }
 
@@ -98,6 +100,8 @@ struct FWeather: Codable {
 enum MainEnum: String, Codable {
     case clear = "Clear"
     case clouds = "Clouds"
+    case rain = "Rain"
+
 }
 
 enum FDescription: String, Codable {
@@ -105,6 +109,7 @@ enum FDescription: String, Codable {
     case clearSky = "clear sky"
     case fewClouds = "few clouds"
     case overcastClouds = "overcast clouds"
+    case lightRain = "light rain"
     case scatteredClouds = "scattered clouds"
 }
 
@@ -113,5 +118,14 @@ struct FWind: Codable {
     let speed: Double?
     let deg: Int?
     let gust: Double?
+}
+
+// MARK: - Rain
+struct Rain: Codable {
+    let the3H: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case the3H = "3h"
+    }
 }
 

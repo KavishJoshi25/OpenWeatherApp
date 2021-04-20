@@ -124,5 +124,12 @@ class WeatherManager {
 
         return imgString
     }
+    
+    static func getCurrentTime() -> String {
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm:ss"
+        df.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        return df.string(from: Date())
+    }
 }
 
